@@ -55,15 +55,15 @@ class ALUControl extends Module {
           InstructionsTypeI.sltiu -> ALUFunctions.sltu,
 
           // TODO: Complete the following mappings
-          InstructionsTypeI.xori  -> ?,
-          InstructionsTypeI.ori   -> ?,
-          InstructionsTypeI.andi  -> ?,
+          InstructionsTypeI.xori  -> ALUFunctions.xor,
+          InstructionsTypeI.ori   -> ALUFunctions.or,
+          InstructionsTypeI.andi  -> ALUFunctions.and,
 
           // SRLI/SRAI distinguished by funct7[5]:
           //   funct7[5] = 0 → SRLI (logical right shift)
           //   funct7[5] = 1 → SRAI (arithmetic right shift)
           // TODO: Complete Mux selection logic
-          InstructionsTypeI.sri   -> ?
+          InstructionsTypeI.sri   -> Mux(io.funct7(5), ALUFunctions.sra, ALUFunctions.srl)
         )
       )
     }
@@ -83,15 +83,15 @@ class ALUControl extends Module {
           InstructionsTypeR.sltu    -> ALUFunctions.sltu,
 
           // TODO: Complete the following mappings
-          InstructionsTypeR.xor     -> ?,
-          InstructionsTypeR.or      -> ?,
-          InstructionsTypeR.and     -> ?,
+          InstructionsTypeR.xor     -> ALUFunctions.xor,
+          InstructionsTypeR.or      -> ALUFunctions.or,
+          InstructionsTypeR.and     -> ALUFunctions.and,
 
           // SRL/SRA distinguished by funct7[5]:
           //   funct7[5] = 0 → SRL (logical right shift)
           //   funct7[5] = 1 → SRA (arithmetic right shift)
           // TODO: Complete Mux selection logic
-          InstructionsTypeR.sr      -> ?
+          InstructionsTypeR.sr      -> Mux(io.funct7(5), ALUFunctions.sra, ALUFunctions.srl)
         )
       )
     }
