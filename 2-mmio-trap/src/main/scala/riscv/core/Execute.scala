@@ -144,7 +144,7 @@ class Execute extends Module {
   // - JALR: (rs1 + immediate) & ~1 (register base, clear LSB for alignment)
   //
   // TODO: Complete the following address calculations
-  val branchTarget = io.instruction + io.immediate
+  val branchTarget = io.instruction_address + io.immediate
 
   val jalTarget    = branchTarget  // JAL and Branch use same calculation method
 
