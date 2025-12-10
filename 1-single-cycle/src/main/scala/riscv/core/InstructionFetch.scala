@@ -69,7 +69,7 @@ class InstructionFetch extends Module {
     // - False case: Sequential execution
 
     // My Test
-    pc := MUX(io.jump_flag_id, io.jump_address_id, pc + 4.U) 
+    pc := Mux(io.jump_flag_id, io.jump_address_id, pc + 4.U) 
 
   }.otherwise {
     // When instruction is invalid, hold PC and insert NOP (ADDI x0, x0, 0)
