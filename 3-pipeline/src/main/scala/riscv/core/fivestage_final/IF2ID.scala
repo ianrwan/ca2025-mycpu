@@ -83,7 +83,7 @@ class IF2ID extends Module {
   //
   // TODO: Complete the instantiation and connection
   // Hint: Use Module() to instantiate PipelineRegister with appropriate default
-  val instruction = Module(new PipelineRegister(defaultValue = ?))
+  val instruction = Module(new PipelineRegister(defaultValue = InstructionsNop.nop))
   instruction.io.in     := io.instruction
   instruction.io.stall  := io.stall
   instruction.io.flush  := io.flush
@@ -92,7 +92,7 @@ class IF2ID extends Module {
   // For instruction address register:
   // - Flush: Output entry address (ProgramCounter.EntryAddress)
   // TODO: Complete the instantiation and connection
-  val instruction_address = Module(new PipelineRegister(defaultValue = ?))
+  val instruction_address = Module(new PipelineRegister(defaultValue = ProgramCounter.EntryAddress.U(Parameters.AddrWidth.W)))
   instruction_address.io.in     := io.instruction_address
   instruction_address.io.stall  := io.stall
   instruction_address.io.flush  := io.flush
